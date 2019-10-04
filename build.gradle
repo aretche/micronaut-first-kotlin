@@ -14,6 +14,7 @@ group "example.micronaut"
 repositories {
     mavenCentral()
     maven { url "https://jcenter.bintray.com" }
+    maven { url "https://dl.bintray.com/spekframework/spek" }
 }
 
 configurations {
@@ -39,6 +40,9 @@ dependencies {
     testImplementation "io.micronaut.test:micronaut-test-kotlintest"
     testImplementation "io.mockk:mockk:1.9.3"
     testImplementation "io.kotlintest:kotlintest-runner-junit5:3.3.2"
+    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
+    testImplementation "org.spekframework.spek2:spek-dsl-jvm:$spekVersion"
+    testRuntimeOnly "org.spekframework.spek2:spek-runner-junit5:$spekVersion"
 }
 
 test.classpath += configurations.developmentOnly
@@ -46,7 +50,9 @@ test.classpath += configurations.developmentOnly
 mainClassName = "example.micronaut.Application"
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        includeEngines 'spek2'
+    }
 }
 
 allOpen {
