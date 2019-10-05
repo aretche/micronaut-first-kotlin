@@ -20,16 +20,18 @@ object InfoSpec: Spek({
 
             assertEquals(rsp.status(), HttpStatus.OK)
 
+            @Suppress("UNCHECKED_CAST")
             val json : Map<String, Any> = rsp.body() as Map<String, Any>
 
             assertNotNull(json["git"])
-
-            val mapCommit = (json["git"] as Map<String, Any>)["commit"] as Map<String, Object>
+            @Suppress("UNCHECKED_CAST")
+            val mapCommit = (json["git"] as Map<String, Any>)["commit"] as Map<String, Any>
             assertNotNull(mapCommit)
             assertNotNull(mapCommit["message"])
             assertNotNull(mapCommit["time"])
             assertNotNull(mapCommit["id"])
             assertNotNull(mapCommit["user"])
+            @Suppress("UNCHECKED_CAST")
             assertNotNull((json["git"] as Map<String, Any>)["branch"])
 
         }
