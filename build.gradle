@@ -47,6 +47,10 @@ dependencies {
     testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlinVersion"
     testImplementation "org.spekframework.spek2:spek-dsl-jvm:$spekVersion"
     testRuntimeOnly "org.spekframework.spek2:spek-runner-junit5:$spekVersion"
+    // Libraries for database access
+    compile "io.micronaut.configuration:micronaut-hibernate-jpa"
+    compile "io.micronaut.configuration:micronaut-jdbc-hikari"
+    runtime "org.postgresql:postgresql"
 }
 
 test.classpath += configurations.developmentOnly

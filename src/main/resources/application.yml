@@ -5,3 +5,18 @@ endpoints:
   info:
     enabled: true
     sensitive: false
+datasources:
+  default:
+    url: ${JDBC_URL:`jdbc:postgresql://localhost/first`}
+    username: ${JDBC_USER:postgres}
+    password: ${JDBC_PASSWORD:postgres}
+    driverClassName: ${JDBC_DRIVER:org.postgresql.Driver}
+jpa:
+  default:
+    packages-to-scan:
+      - 'example.micronaut.domain'
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        show_sql: true
